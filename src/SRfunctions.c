@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h>
-#include "SRfunctions.h"
+#include "lib/SRfunctions.h"
 
 void pack_send(int sock, pack_data *src) {
     static char buffer[128];
