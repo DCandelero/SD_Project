@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "SRfunctions.c"
-#include "lib/trapezium.h"
+#include "trapezium.h"
 
 
 void error(const char *msg)
