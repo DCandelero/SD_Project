@@ -5,6 +5,7 @@
 int main() {
     int slaveNum = 0, portNum = 0, i = 0;
     char strS[120], strS1[120], strM[120], strM1[120];
+    double j;
 
     printf("digite o número de escravos:");
     scanf("%d", &slaveNum);
@@ -12,8 +13,11 @@ int main() {
     printf("digite a porta para a conexão:");
     scanf("%d", &portNum);
 
+    printf("digite o valor de discretização:");
+    scanf("%lf", &j);
+
     // Compile files
-    system("gcc ./slave.c -o slave && gcc ./master.c -o master");
+    system("gcc ./slave.c -lm -o slave && gcc ./master.c -o master");
 
     for (i = 0; i < slaveNum; i++) {
         //openPort
@@ -22,7 +26,7 @@ int main() {
     }
         
     // Execute files in different terminals
-    sprintf(strM, "gnome-terminal --bash -c \"./master %d %d\"; exec bash", portNum, slaveNum);
+    sprintf(strM, "gnome-terminal --bash -c \"./master localhost %d %d %lf\"; exec bash", portNum, slaveNum, j);
     system(strM);
 
     // optional
