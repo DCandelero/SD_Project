@@ -21,12 +21,12 @@ int main() {
 
     for (i = 0; i < slaveNum; i++) {
         //openPort
-        sprintf(strS, "gnome-terminal --bash -c \"./slave %d\"; exec bash", portNum);
+        sprintf(strS, "gnome-terminal -- bash -c \"./slave %d\"; exec bash", portNum);
         system(strS);
     }
         
     // Execute files in different terminals
-    sprintf(strM, "gnome-terminal --bash -c \"./master localhost %d %d %lf\"; exec bash", portNum, slaveNum, j);
+    sprintf(strM, "./master localhost %d %d %lf", portNum, slaveNum, j);
     system(strM);
 
     // optional
