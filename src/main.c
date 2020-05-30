@@ -18,23 +18,25 @@ int main() {
 
     // Compile files
     system("gcc ./slave.c -lm -o slave && gcc ./master.c -o master");
-
+    printf("chegou aqui feiao");
     for (i = 0; i < slaveNum; i++) {
-        //openPort
-        sprintf(strS, "gnome-terminal -- bash -c \"./slave %d\"; exec bash", portNum);
+        // Execute slaves in different terminals
+        sprintf(strS, "gnome-terminal -- bash -c \"./slave %d\"; exec bash", portNum+i);
         system(strS);
+
+        // Optional
+        // sprintf(strS1, "xterm -e bash -c \"./slave %d\"; exec bash", portNum+i);
+        // system(strS1);
     }
-        
-    // Execute files in different terminals
+    // Execute master in current terminal 
     sprintf(strM, "./master localhost %d %d %lf", portNum, slaveNum, j);
     system(strM);
-
-    // optional
-    // sprintf(strS1, "xterm -e bash -c \"./slave %d\"; exec bash", portNum);
-    // sprintf(strM1, ""xterm -e bash -c \"./master %d %d\"; exec bash", portNum, slaveNum);
-    //
-    // system(strS1);
+    
+    // Optional
+    // sprintf(strM1,"./master localhost %d %d %lf", portNum, slaveNum, j);
     // system(strM1);
+
+
 
     
 
