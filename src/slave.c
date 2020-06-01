@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 {
     int sockfd, newsockfd, portno;
     socklen_t clilen;
-    pack_data data = {0, 0, 0, 0};
+    pack_data data = {0, 0, 0};
     struct sockaddr_in serv_addr, cli_addr;
     int n;
     if (argc < 2) {
@@ -47,10 +47,10 @@ int main(int argc, char *argv[])
     if (newsockfd < 0) 
         error("ERROR on accept");
     pack_recv(newsockfd, &data);
-    printf("AFTER SEND: %d, %lf, %lf, %lf \n", data.type, data.xi, data.xf, data.j);
+    printf("Recebendo dados de entrada...\n");
     double sum = trapeziumCalc(data.j,data.xi,data.xf);
     result_send(newsockfd, sum);
-    printf("Result: %lf \n", sum);
+    printf("Resultado do cálculo: %lf \n", sum);
     close(newsockfd);
     close(sockfd);
     return 0; 

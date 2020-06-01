@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     j = atof(argv[4]);
 
 
-    pack_data data = {1, 0, 100, j};
+    pack_data data = {0, 100, j};
 
     /*if (argc < 3) {
        fprintf(stderr,"usage %s hostname port\n", argv[0]);
@@ -65,20 +65,19 @@ int main(int argc, char *argv[])
         data.xi = Ipartial*i;
         data.xf = Ipartial + Ipartial*i;
 
-        printf("BEFORE SEND: %d, %lf, %lf, %lf \n", data.type, data.xi, data.xf, data.j);
+        printf("\nSolicitando cálculo ao escravo No %d...\nDados de entrada: %.1lf, %.1lf, %lf \n",i, data.xi, data.xf, data.j);
         pack_send(socks[i],&data);
     }
-
+    printf("\n");
     for(i = 0; i < n_slaves; i++) { // receber a resposta de cada slave e fechar a conexao
       result_recv(socks[i], &result[i]);
       close(socks[i]);
       printf("slave No %d, result[%d] = %lf\n", i, i, result[i]);
       finalResult += result[i];
-      printf("Final result = %lf\n", finalResult);
     }
 
 
-    printf("Resultado da integral: %lf\n", finalResult);
+    printf("\nResultado da integral: %lf\n", finalResult);
 
     return 0;
 }

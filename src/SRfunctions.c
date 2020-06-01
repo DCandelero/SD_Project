@@ -6,8 +6,7 @@
 
 void pack_send(int sock, pack_data *src) {
     static char buffer[128];
-    sprintf(buffer, "%d %g %g %g",
-            src->type,
+    sprintf(buffer, "%g %g %g",
             src->xi,
             src->xf,
             src->j);
@@ -18,8 +17,7 @@ void pack_recv(int sock, pack_data *dest) {
     static char buffer[128];
     bzero(buffer, sizeof(buffer));
     recv(sock, buffer, 128, 0);
-    sscanf(buffer, "%d %lf %lf %lf",
-            &(dest->type),
+    sscanf(buffer, "%lf %lf %lf",
             &(dest->xi),
             &(dest->xf),
             &(dest->j));

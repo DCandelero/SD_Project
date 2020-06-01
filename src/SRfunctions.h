@@ -3,7 +3,6 @@
 
 // Package structure
 typedef struct {
-    int type;
     double xi;
     double xf;
     double j;

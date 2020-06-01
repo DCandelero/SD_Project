@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 int main() {
-    int slaveNum = 0, portNum = 50000, i = 0;
+    int slaveNum = 0, portNum, i = 0;
     char strS[120], strS1[120], strM[120], strM1[120];
     double j;
+    srand(time(NULL));
+    portNum = (rand()+5000)%60000;
 
-    printf("digite o número de escravos:");
+    printf("Digite o número de escravos:");
     scanf("%d", &slaveNum);
 
-    printf("digite o valor de discretização:");
+    printf("\nInsira o intervalo de discretização:");
     scanf("%lf", &j);
 
     // Compile files
