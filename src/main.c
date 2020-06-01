@@ -37,7 +37,5 @@ int main() {
     // sprintf(strM1, "./master %d %d %lf", portNum, slaveNum, j);
     // system(strM1);
 
-
-    
     return 0;
 }
